@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-ruby "2.3.5"
+ruby "2.7.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.11'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.10'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,6 +35,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'stripe'
 gem 'faker'
+gem 'bigdecimal', '1.3.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
