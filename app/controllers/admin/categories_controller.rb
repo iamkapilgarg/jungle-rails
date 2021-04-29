@@ -6,5 +6,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def index
+    @categories = Category.order(id: :desc).all
   end
 end
