@@ -1,4 +1,13 @@
+require "dotenv"
+
 class Admin::ProductsController < ApplicationController
+  # Rails.configuration.admin = {
+  #   :admin_name => ENV['ADMIN_NAME'],
+  #   :admin_password => ENV['ADMIN_PASSWORD']
+  # }
+  # http_basic_authenticate_with name: Rails.configuration.admin[:admin_name], password: Rails.configuration.admin[:admin_password]
+
+  http_basic_authenticate_with name: ENV['ADMIN_NAME'], password: ENV['ADMIN_PASSWORD']
 
   def index
     @products = Product.order(id: :desc).all
