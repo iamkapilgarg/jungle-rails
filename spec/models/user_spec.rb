@@ -25,9 +25,21 @@ RSpec.describe User, type: :model do
       @user2 = User.new(:name => 'Kapil', :email=>'IAMKAPILGARG@gmail.com', :password=>"abcd", :password_confirmation=>"abcd")
       @user.save!
       @user2.valid?
-      p @user2.errors.full_messages
       expect(@user2.errors.full_messages).to include("Email has already been taken")
     end
-    
+  end
+
+  describe 'authenticate with credentials' do
+    it 'should return user' do
+      @user = @user = User.new(:name => 'Kapil', :email=>'iamkapilgarg@gmail.com', :password=>"abcd", :password_confirmation=>"abcd")
+      @user.save!
+      expect(@user.authenticate_with_credentials('iamkapilgarg@gmail.com', 'abcd')).to be_truthy
+    end
+
+    it 'should not return user' do
+      @user = @user = User.new(:name => 'Kapil', :email=>'iamkapilgarg@gmail.com', :password=>"abcd", :password_confirmation=>"abcd")
+      @user.save!
+      expect(@user.authenticate_with_credentials('iamkapilgarg@gmail.com', 'efgh')).to be_nil
+    end
   end
 end
