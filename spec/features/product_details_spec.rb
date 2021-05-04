@@ -16,7 +16,6 @@ RSpec.feature "ProductDetails", type: :feature, js:true do
     visit root_path
     click_link('Details »')
     go_forward
-    save_screenshot
     expect(page).to have_css 'article.product-detail'
   end
 end
