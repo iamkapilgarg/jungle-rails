@@ -41,5 +41,12 @@ RSpec.describe User, type: :model do
       @user.save!
       expect(@user.authenticate_with_credentials('iamkapilgarg@gmail.com', 'efgh')).to be_nil
     end
+
+    it 'should return user even if email has spaces' do
+      @user = @user = User.new(:name => 'Kapil', :email=>' iamkapilgarg@gmail.com ', :password=>"abcd", :password_confirmation=>"abcd")
+      @user.save!
+      expect(@user.authenticate_with_credentials('iamkapilgarg@gmail.com', 'abcd')).to be_nil
+    end
+
   end
 end
